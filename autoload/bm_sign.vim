@@ -84,3 +84,5 @@ function! bm_sign#lines_for_signs(file)
 endfunction
 
 " }}}
+
+" vim: foldmethod=marker

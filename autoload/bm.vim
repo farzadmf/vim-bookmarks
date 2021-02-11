@@ -24,7 +24,7 @@ function! bm#get_bookmark_by_line(file, line_nr)
 endfunction
 
 function! bm#is_bookmark_has_annotation_by_line(file, line_nr)
-  return g:line_map[a:file][a:line_nr]['annotation'] !=# "" 
+  return g:line_map[a:file][a:line_nr]['annotation'] !=# ""
 endfunction
 
 function! bm#get_bookmark_by_sign(file, sign_idx)
@@ -182,7 +182,7 @@ function! bm#deserialize(data)
     for file in keys(ses)
       for bm in ses[file]
         let annotation = has_key(bm, 'annotation') ? bm['annotation'] : ''
-         call add(result, 
+         call add(result,
             \ extend(
               \ copy(
                 \ bm#add_bookmark(file, bm['sign_idx'], bm['line_nr'], bm['content'], annotation)
@@ -196,7 +196,6 @@ endfunction
 
 " }}}
 
-
 " Private {{{
 
 function! bm#compare_lines(line_str1, line_str2)
@@ -206,3 +205,5 @@ function! bm#compare_lines(line_str1, line_str2)
 endfunc
 
 " }}}
+
+" vim: foldmethod=marker

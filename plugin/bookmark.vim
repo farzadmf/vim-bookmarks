@@ -49,7 +49,6 @@ endfunction
 
 " }}}
 
-
 " Commands {{{
 
 function! BookmarkToggle()
@@ -68,9 +67,11 @@ function! BookmarkToggle()
       endif
     endif
     call s:bookmark_remove(file, current_line)
+    call s:auto_save()
     echo "Bookmark removed"
   else
     call s:bookmark_add(file, current_line)
+    call s:auto_save()
     echo "Bookmark added"
   endif
 endfunction
@@ -114,6 +115,7 @@ function! BookmarkAnnotate(...)
   " Create bookmark with annotation
   elseif new_annotation !=# ""
     call s:bookmark_add(file, current_line, new_annotation)
+    call s:auto_save()
     echo "Bookmark added with annotation: ". new_annotation
   endif
 endfunction
@@ -166,7 +168,7 @@ function! BookmarkPrev()
 endfunction
 command! PrevBookmark call CallDeprecatedCommand('BookmarkPrev')
 command! BookmarkPrev call BookmarkPrev()
-command! CtrlPBookmark call ctrlp#init(ctrlp#bookmarks#id()) 
+command! CtrlPBookmark call ctrlp#init(ctrlp#bookmarks#id())
 
 function! BookmarkShowAll()
   if s:is_quickfix_win()
@@ -303,7 +305,6 @@ command! -nargs=? BookmarkMoveDown call s:move_relative(<q-args>, 1)
 command! -nargs=? BookmarkMoveToLine call s:move_absolute(<q-args>)
 
 " }}}
-
 
 " Private {{{
 
@@ -531,7 +532,6 @@ endfunction
 
 " }}}
 
-
 " Maps {{{
 
 function! s:register_mapping(command, shortcut, has_count)
@@ -567,3 +567,5 @@ if has('vim_starting')
 else
   call s:init(expand('%:p'))
 endif
+
+" vim: foldmethod=marker

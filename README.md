@@ -1,5 +1,11 @@
 ## vim-bookmarks [![Build Status](https://travis-ci.org/MattesGroeger/vim-bookmarks.svg)](https://travis-ci.org/MattesGroeger/vim-bookmarks) [![Release](http://img.shields.io/github/release/MattesGroeger/vim-bookmarks.svg)](https://github.com/MattesGroeger/vim-bookmarks/releases) [![Release](http://img.shields.io/github/issues/MattesGroeger/vim-bookmarks.svg)](https://github.com/MattesGroeger/vim-bookmarks/issues)
 
+---
+
+> This fork adds the call to 'auto_save' to make sure bookmarks are saved upon every change
+
+---
+
 This vim plugin allows toggling bookmarks per line. A quickfix window gives access to all bookmarks. Annotations can be added as well. These are special bookmarks with a comment attached. They are useful for preparing code reviews. All bookmarks will be restored on the next startup.
 
 ![Preview](https://raw.github.com/MattesGroeger/vim-bookmarks/master/preview.gif)
