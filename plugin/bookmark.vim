@@ -129,6 +129,7 @@ function! BookmarkClear()
   for line_nr in lines
     call s:bookmark_remove(file, line_nr)
   endfor
+  call s:auto_save()
   echo "Bookmarks removed"
 endfunction
 command! ClearBookmarks call CallDeprecatedCommand('BookmarkClear', [])
@@ -148,6 +149,7 @@ function! BookmarkClearAll(silent)
     call s:remove_all_bookmarks()
     if (!a:silent)
       execute ":redraw!"
+      call s:auto_save()
       echo "All bookmarks removed"
     endif
   endif
